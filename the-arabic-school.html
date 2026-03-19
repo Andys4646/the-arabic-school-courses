@@ -260,103 +260,94 @@ nav a:hover { color: var(--off-white); }
 .course-card:hover .card-cta::after { transform: translateX(3px); }
 .card-sessions { font-size: 11.5px; color: var(--text-faint); font-style: italic; }
 
-/* ── LEGAL ── */
-.legal-section {
+/* ── POLICY STRIP ── */
+.policy-strip {
   background: var(--green);
-  color: var(--off-white);
-  padding: 4.8rem clamp(1.5rem, 4vw, 3rem);
+  border-top: 0.5px solid rgba(246,243,236,0.14);
+  padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
 }
-.legal-head {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-  font-weight: 300; font-style: italic;
-  color: var(--off-white);
-  margin-bottom: 1rem; padding-bottom: 1rem;
-  border-bottom: 0.5px solid rgba(246,243,236,0.18);
-  max-width: 1160px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.legal-intro {
-  max-width: 1160px;
-  margin: 0 auto 1.1rem;
-  font-size: 15.5px;
-  line-height: 1.8;
-  color: rgba(246,243,236,0.77);
-}
-.policy-meta {
-  max-width: 1160px;
-  margin: 0 auto 1.8rem;
-  font-size: 12.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(246,243,236,0.55);
-}
-.legal-quicklinks {
-  max-width: 1160px;
-  margin: 0 auto 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-.legal-quicklinks a {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: rgba(246,243,236,0.88);
-  border: 0.5px solid rgba(246,243,236,0.36);
-  padding: 0.42rem 0.72rem;
-}
-.legal-quicklinks a:hover {
-  background: rgba(246,243,236,0.12);
-}
-.legal-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1rem;
+.policy-strip-inner {
   max-width: 1160px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
 }
-.legal-block {
-  border: 0.5px solid rgba(246,243,236,0.22);
-  background: rgba(13,28,21,0.2);
-  padding: 1.1rem 1.05rem 1rem;
+.policy-copy {
+  font-size: 14px;
+  color: rgba(246,243,236,0.72);
 }
-.legal-block h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem; font-weight: 500;
-  color: var(--off-white);
-  margin-bottom: 0.65rem; padding-bottom: 0.55rem;
-  border-bottom: 0.5px solid rgba(246,243,236,0.14);
+.policy-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
 }
-.legal-block p,
-.legal-block li {
-  font-size: 14.5px; color: rgba(246,243,236,0.84);
-  line-height: 1.72;
+.policy-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  color: rgba(246,243,236,0.92);
 }
-.legal-block ul { padding-left: 1.2rem; margin-top: 0.3rem; }
-.legal-block li { margin-bottom: 0.32rem; }
+.policy-links a:hover { text-decoration: underline; }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--green);
+  background: linear-gradient(100deg, #0f3a35 0%, #072733 100%);
   border-top: 0.5px solid rgba(246,243,236,0.1);
-  padding: 2rem 3rem;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 0.75rem;
+  padding: 2.2rem clamp(1.5rem, 4vw, 3rem);
+}
+.footer-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.2rem 2rem;
+  align-items: center;
+}
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .footer-brand {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 14px; font-weight: 500;
-  letter-spacing: 0.09em; text-transform: uppercase;
+  font-size: 1.95rem;
+  font-weight: 600;
+  color: rgba(246,243,236,0.95);
+}
+.footer-note { font-size: 14.5px; color: rgba(246,243,236,0.76); }
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.footer-nav {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+.footer-nav a,
+.footer-email a,
+.footer-policy-links a {
+  text-decoration: none;
+  color: rgba(246,243,236,0.93);
+  font-size: 14.5px;
+}
+.footer-email a { font-size: 17px; font-weight: 600; }
+.footer-policy-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.footer-policy-links .sep {
   color: rgba(246,243,236,0.45);
 }
-.footer-ar {
-  font-family: 'Amiri', serif;
-  font-size: 1.2rem; color: rgba(246,243,236,0.35); direction: rtl;
-}
-.footer-note { font-size: 12.5px; color: rgba(246,243,236,0.3); font-style: italic; }
+.footer-nav a:hover,
+.footer-email a:hover,
+.footer-policy-links a:hover { text-decoration: underline; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
@@ -371,11 +362,14 @@ footer {
   nav a { font-size: 13.2px; padding: 0 0.55rem; }
   .logo-en { font-size: 13.5px; }
   .hero { padding: 4rem 1.5rem; }
-  .subject-section, .legal-section { padding: 3.2rem 1.5rem; }
+  .subject-section { padding: 3.2rem 1.5rem; }
   .section-desc { font-size: 16px; }
   .card-desc { font-size: 14px; }
-  .legal-block p, .legal-block li { font-size: 14px; }
-  footer { padding: 1.8rem 1.5rem; flex-direction: column; text-align: center; }
+  .policy-strip { padding: 1.4rem 1.5rem; }
+  .policy-copy { font-size: 13.5px; }
+  footer { padding: 1.8rem 1.5rem; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-right { align-items: center; }
   .lang-bar { padding: 0.4rem 1.2rem; }
   .section-ar { display: none; }
 }
@@ -391,10 +385,6 @@ body.ar-mode .section-ar { margin-left: 0; margin-right: auto; }
 body.ar-mode .card-cta::after { content: '←'; }
 body.ar-mode [data-en] { display: none !important; }
 body.ar-mode [data-ar] { display: inline !important; }
-body.ar-mode .legal-block p[data-en],
-body.ar-mode .legal-block ul[data-en] { display: none !important; }
-body.ar-mode .legal-block p[data-ar],
-body.ar-mode .legal-block ul[data-ar] { display: block !important; }
 </style>
 </head>
 <body>
@@ -432,7 +422,7 @@ body.ar-mode .legal-block ul[data-ar] { display: block !important; }
 	    <a href="#balaghah"><span data-en>Balāghah</span><span data-ar>البلاغة</span></a>
 	    <a href="#literature"><span data-en>Literature</span><span data-ar>الأدب</span></a>
 	    <a href="#linguistics"><span data-en>Linguistics</span><span data-ar>اللسانيات</span></a>
-	    <a href="#legal"><span data-en>Policies</span><span data-ar>السياسات</span></a>
+	    <a href="policies.html"><span data-en>Policies</span><span data-ar>السياسات</span></a>
 	  </nav>
 </header>
 
@@ -932,130 +922,19 @@ body.ar-mode .legal-block ul[data-ar] { display: block !important; }
 </section>
 
 
-<!-- ══ LEGAL POLICIES ══ -->
-<section class="legal-section" id="legal">
-  <h2 class="legal-head">
-    <span data-en>Policies, Terms, and Student Guidelines</span>
-    <span data-ar>السياسات والشروط وإرشادات الطالب</span>
-  </h2>
-  <p class="legal-intro">
-    <span data-en>To keep learning clear and fair for everyone, the following policies explain how enrolment, payments, cancellations, refunds, class conduct, and student data are handled.</span>
-    <span data-ar>لضمان تجربة تعليمية واضحة وعادلة للجميع، توضّح السياسات التالية آلية التسجيل والدفع والإلغاء والاسترداد والسلوك الأكاديمي وحماية بيانات الطلاب.</span>
-  </p>
-  <p class="policy-meta">
-    <span data-en>Effective Date: March 20, 2026</span>
-    <span data-ar>تاريخ السريان: 20 مارس 2026</span>
-  </p>
-  <div class="legal-quicklinks">
-    <a href="#policy-privacy"><span data-en>Privacy</span><span data-ar>الخصوصية</span></a>
-    <a href="#policy-enrolment"><span data-en>Enrolment</span><span data-ar>التسجيل</span></a>
-    <a href="#policy-cancellation"><span data-en>Cancellation</span><span data-ar>الإلغاء</span></a>
-    <a href="#policy-refund"><span data-en>Refund</span><span data-ar>الاسترداد</span></a>
-    <a href="#policy-conduct"><span data-en>Conduct</span><span data-ar>السلوك</span></a>
-    <a href="#policy-academic"><span data-en>General Terms</span><span data-ar>سياسات عامة</span></a>
-  </div>
-  <div class="legal-grid">
-
-    <div class="legal-block" id="policy-privacy">
-      <h3><span data-en>Privacy Policy</span><span data-ar>سياسة الخصوصية</span></h3>
-      <ul data-en>
-        <li>We collect only the information needed for admissions and class delivery: name, email, payment status, and course selection.</li>
-        <li>Your data is used for enrolment, scheduling, class communication, and student support.</li>
-        <li>We do not sell personal data or share it for advertising purposes.</li>
-        <li>You may request correction or deletion of your data by contacting the school through official communication channels.</li>
-      </ul>
-      <ul data-ar style="display:none">
-        <li>نجمع فقط البيانات اللازمة للتسجيل وإدارة الدراسة: الاسم، البريد الإلكتروني، حالة الدفع، واختيار الدورة.</li>
-        <li>تُستخدم البيانات للتسجيل وجدولة الدروس والتواصل الأكاديمي وخدمة الطالب.</li>
-        <li>لا نبيع البيانات الشخصية ولا نشاركها لأغراض إعلانية.</li>
-        <li>يمكنك طلب تصحيح بياناتك أو حذفها عبر قنوات التواصل الرسمية للمدرسة.</li>
-      </ul>
+<!-- ══ POLICY LINKS ══ -->
+<section class="policy-strip" id="legal">
+  <div class="policy-strip-inner">
+    <p class="policy-copy">
+      <span data-en>Read full school policies, cancellation terms, and refund details on our dedicated policies page.</span>
+      <span data-ar>يمكنك قراءة كامل سياسات المدرسة وشروط الإلغاء والاسترداد في صفحة السياسات المخصصة.</span>
+    </p>
+    <div class="policy-links">
+      <a href="policies.html#privacy"><span data-en>Privacy Policy</span><span data-ar>سياسة الخصوصية</span></a>
+      <a href="policies.html#cancellation"><span data-en>Cancellation Policy</span><span data-ar>سياسة الإلغاء</span></a>
+      <a href="policies.html#refund"><span data-en>Refund Policy</span><span data-ar>سياسة الاسترداد</span></a>
+      <a href="policies.html#general"><span data-en>General Policies</span><span data-ar>السياسات العامة</span></a>
     </div>
-
-    <div class="legal-block" id="policy-enrolment">
-      <h3><span data-en>Enrolment &amp; Payment Policy</span><span data-ar>سياسة التسجيل والدفع</span></h3>
-      <ul data-en>
-        <li>Your seat is confirmed once registration is accepted and required payment is completed.</li>
-        <li>Published course fees apply at the time of enrolment unless a written scholarship or discount is granted.</li>
-        <li>Payment plans, when offered, must be completed on schedule to maintain active enrolment status.</li>
-        <li>The school may place enrolment on hold when payment obligations are overdue.</li>
-      </ul>
-      <ul data-ar style="display:none">
-        <li>يُثبت مقعدك بعد قبول التسجيل وإتمام الدفعة المطلوبة.</li>
-        <li>تُطبَّق الرسوم المعلنة وقت التسجيل ما لم يُمنح خصم أو منحة مكتوبة.</li>
-        <li>عند توفر خطط التقسيط، يجب الالتزام بمواعيدها للحفاظ على حالة التسجيل.</li>
-        <li>يجوز للمدرسة تعليق التسجيل عند تأخر الالتزامات المالية.</li>
-      </ul>
-    </div>
-
-    <div class="legal-block" id="policy-cancellation">
-      <h3><span data-en>Cancellation Policy</span><span data-ar>سياسة الإلغاء</span></h3>
-      <ul data-en>
-        <li>Cancellation requests must be submitted in writing before they can be reviewed.</li>
-        <li>If you cancel before the first session, you may request either a refund under the refund policy or a one-time transfer to a future cohort.</li>
-        <li>Missed classes after course start are treated as absences, not cancellations.</li>
-        <li>If the school cancels or postpones a course, students are offered a transfer option or eligible refund.</li>
-      </ul>
-      <ul data-ar style="display:none">
-        <li>يجب تقديم طلبات الإلغاء كتابةً ليتم اعتمادها.</li>
-        <li>إذا كان الإلغاء قبل الجلسة الأولى، يمكنك طلب استرداد وفق السياسة أو تحويل لمرة واحدة إلى دفعة لاحقة.</li>
-        <li>الغياب بعد بدء الدورة يُعد غيابًا دراسيًا وليس إلغاءً.</li>
-        <li>إذا ألغت المدرسة الدورة أو أجّلتها، يُتاح للطالب التحويل أو الاسترداد المستحق.</li>
-      </ul>
-    </div>
-
-    <div class="legal-block" id="policy-refund">
-      <h3><span data-en>Refund Policy</span><span data-ar>سياسة الاسترداد</span></h3>
-      <ul data-en>
-        <li>100% refund if The Arabic School cancels a course before launch.</li>
-        <li>100% refund if requested within 7 days of payment and at least 7 days before the first live class.</li>
-        <li>50% refund if requested after the above window but before the second live class starts.</li>
-        <li>No refund from the date of the second live class onward.</li>
-        <li>Approved refunds are returned to the original payment method within 10 business days.</li>
-      </ul>
-      <ul data-ar style="display:none">
-        <li>استرداد كامل إذا ألغت مدرسة العربية الدورة قبل انطلاقها.</li>
-        <li>استرداد كامل إذا طُلب خلال 7 أيام من الدفع وقبل 7 أيام على الأقل من أول درس مباشر.</li>
-        <li>استرداد 50٪ إذا طُلب بعد هذه المهلة وقبل بداية الدرس المباشر الثاني.</li>
-        <li>لا يوجد استرداد من تاريخ الدرس المباشر الثاني فصاعدًا.</li>
-        <li>تُعاد المبالغ المعتمدة إلى وسيلة الدفع الأصلية خلال 10 أيام عمل.</li>
-      </ul>
-    </div>
-
-    <div class="legal-block" id="policy-conduct">
-      <h3><span data-en>Code of Conduct</span><span data-ar>مدوّنة السلوك</span></h3>
-      <ul data-en>
-        <li>Students are expected to communicate respectfully with teachers and peers in all class spaces.</li>
-        <li>Harassment, discriminatory language, repeated disruption, or academic misconduct is not permitted.</li>
-        <li>The school may remove any participant whose behavior harms the learning environment.</li>
-        <li>Removal due to serious misconduct may be made without refund.</li>
-      </ul>
-      <ul data-ar style="display:none">
-        <li>يُتوقع من الطلاب الالتزام بالاحترام مع المعلمين والزملاء في جميع بيئات التعلم.</li>
-        <li>يُمنع التحرش أو الخطاب المسيء أو الإخلال المتكرر أو المخالفات الأكاديمية.</li>
-        <li>يجوز للمدرسة استبعاد أي مشارك يضر ببيئة الدراسة.</li>
-        <li>قد يتم الاستبعاد بسبب المخالفة الجسيمة دون استرداد.</li>
-      </ul>
-    </div>
-
-    <div class="legal-block" id="policy-academic">
-      <h3><span data-en>General Policies &amp; Terms</span><span data-ar>السياسات العامة والشروط</span></h3>
-      <ul data-en>
-        <li>Classes are delivered online at scheduled times shared after enrolment confirmation.</li>
-        <li>Course materials are for personal educational use and may not be resold, republished, or redistributed.</li>
-        <li>Recordings, when provided, are for enrolled students only and must not be publicly shared.</li>
-        <li>The school may update curricula, teaching staff, and schedules while maintaining academic standards.</li>
-        <li>For policy-related requests, contact the school through the same official channel used for your registration.</li>
-      </ul>
-      <ul data-ar style="display:none">
-        <li>تُقدَّم الدروس عبر الإنترنت وفق الجداول التي تُرسل بعد تأكيد التسجيل.</li>
-        <li>المواد التعليمية للاستخدام الدراسي الشخصي فقط، ولا يجوز إعادة بيعها أو نشرها أو توزيعها.</li>
-        <li>أي تسجيلات تُتاح مخصصة للطلاب المسجلين فقط، ولا يُسمح بنشرها علنًا.</li>
-        <li>يجوز للمدرسة تحديث المناهج أو المعلمين أو المواعيد مع الحفاظ على المستوى العلمي.</li>
-        <li>لأي طلب متعلق بالسياسات، يُرجى التواصل عبر القناة الرسمية نفسها المستخدمة في التسجيل.</li>
-      </ul>
-    </div>
-
   </div>
 </section>
 
@@ -1068,11 +947,29 @@ body.ar-mode .legal-block ul[data-ar] { display: block !important; }
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <div class="footer-brand">The Arabic School</div>
-  <div class="footer-ar">مدرسة العربية</div>
-  <div class="footer-note">
-    <span data-en>Dedicated to the classical tradition of Arabic scholarship</span>
-    <span data-ar>خدمةً للتراث العلمي العربي الأصيل</span>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">The Arabic School</div>
+      <div class="footer-note">
+        <span data-en>&copy; 2026 The Arabic School. All rights reserved.</span>
+        <span data-ar>&copy; 2026 مدرسة العربية. جميع الحقوق محفوظة.</span>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-nav">
+        <a href="#"><span data-en>Home</span><span data-ar>الرئيسية</span></a>
+        <a href="#nahw"><span data-en>Courses</span><span data-ar>الدورات</span></a>
+        <a href="policies.html"><span data-en>Policies</span><span data-ar>السياسات</span></a>
+      </div>
+      <div class="footer-email">
+        <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>
+      </div>
+      <div class="footer-policy-links">
+        <a href="policies.html#privacy"><span data-en>Privacy Policy</span><span data-ar>الخصوصية</span></a>
+        <span class="sep">|</span>
+        <a href="policies.html#general"><span data-en>Terms of Service</span><span data-ar>الشروط</span></a>
+      </div>
+    </div>
   </div>
 </footer>
 
