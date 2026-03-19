@@ -200,11 +200,12 @@ nav a:hover { color: var(--off-white); }
 /* ── COURSE GRID ── */
 .course-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.2rem;
-  max-width: 1160px;
+  max-width: 980px;
   margin: 0 auto;
 }
+.course-grid .course-card:nth-child(n+4) { display: none; }
 .course-card {
   background: var(--off-white);
   border: 0.5px solid var(--rule-strong);
@@ -225,6 +226,7 @@ nav a:hover { color: var(--off-white); }
   border-bottom: 0.5px solid var(--rule);
   overflow: hidden;
 }
+.card-img { display: none; }
 /* To add an image: replace inner div with <img src="…" alt="…"> */
 .card-img-text {
   font-family: 'Amiri', serif;
@@ -232,7 +234,7 @@ nav a:hover { color: var(--off-white); }
 }
 .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.card-body { padding: 1rem 1.05rem 0.75rem; flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
+.card-body { padding: 1.1rem 1.05rem 0.85rem; flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
 .card-level {
   font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--green-light);
@@ -243,13 +245,17 @@ nav a:hover { color: var(--off-white); }
   color: var(--green); line-height: 1.2;
 }
 .card-desc {
-  font-size: 14.6px; color: var(--text-muted);
-  line-height: 1.68; flex: 1;
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.62; flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .card-foot {
-  padding: 0.55rem 1rem 0.8rem;
+  padding: 0.5rem 1rem 0.8rem;
   border-top: 0.5px solid var(--rule);
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: flex-start; align-items: center;
 }
 .card-cta {
   font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase;
@@ -258,7 +264,21 @@ nav a:hover { color: var(--off-white); }
 }
 .card-cta::after { content: '→'; transition: transform 0.18s; }
 .course-card:hover .card-cta::after { transform: translateX(3px); }
-.card-sessions { font-size: 11.5px; color: var(--text-faint); font-style: italic; }
+.card-sessions { display: none; }
+
+.catalog-note {
+  max-width: 980px;
+  margin: 0.95rem auto 0;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+.catalog-note a {
+  color: var(--green);
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(27,61,44,0.36);
+}
+.catalog-note a:hover { border-bottom-color: rgba(27,61,44,0.85); }
 
 /* ── POLICY STRIP ── */
 .policy-strip {
@@ -363,6 +383,8 @@ footer {
   .logo-en { font-size: 13.5px; }
   .hero { padding: 4rem 1.5rem; }
   .subject-section { padding: 3.2rem 1.5rem; }
+  .course-grid { grid-template-columns: 1fr; }
+  .course-grid .course-card:nth-child(n+4) { display: none; }
   .section-desc { font-size: 16px; }
   .card-desc { font-size: 14px; }
   .policy-strip { padding: 1.4rem 1.5rem; }
@@ -444,6 +466,10 @@ body.ar-mode [data-ar] { display: inline !important; }
       <span data-ar>دروس منهجية في النحو والصرف والبلاغة والأدب واللسانيات — متجذّرة في التراث العلمي الأصيل.</span>
     </p>
   </div>
+  <p class="catalog-note">
+    <span data-en>Showing featured tracks only. For the full Naḥw catalog, contact us at <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+    <span data-ar>يتم عرض المسارات الأساسية فقط. لطلب فهرس النحو الكامل تواصل معنا عبر <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+  </p>
 </section>
 
 
@@ -539,6 +565,10 @@ body.ar-mode [data-ar] { display: inline !important; }
     </a>
 
   </div>
+  <p class="catalog-note">
+    <span data-en>Showing featured tracks only. For the full Ṣarf catalog, contact us at <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+    <span data-ar>يتم عرض المسارات الأساسية فقط. لطلب فهرس الصرف الكامل تواصل معنا عبر <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+  </p>
 </section>
 
 
@@ -634,6 +664,10 @@ body.ar-mode [data-ar] { display: inline !important; }
     </a>
 
   </div>
+  <p class="catalog-note">
+    <span data-en>Showing featured tracks only. For the full Balāghah catalog, contact us at <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+    <span data-ar>يتم عرض المسارات الأساسية فقط. لطلب فهرس البلاغة الكامل تواصل معنا عبر <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+  </p>
 </section>
 
 
@@ -729,6 +763,10 @@ body.ar-mode [data-ar] { display: inline !important; }
     </a>
 
   </div>
+  <p class="catalog-note">
+    <span data-en>Showing featured tracks only. For the full Literature catalog, contact us at <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+    <span data-ar>يتم عرض المسارات الأساسية فقط. لطلب فهرس الأدب الكامل تواصل معنا عبر <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+  </p>
 </section>
 
 
@@ -824,6 +862,10 @@ body.ar-mode [data-ar] { display: inline !important; }
     </a>
 
   </div>
+  <p class="catalog-note">
+    <span data-en>Showing featured tracks only. For the full Linguistics catalog, contact us at <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+    <span data-ar>يتم عرض المسارات الأساسية فقط. لطلب فهرس اللسانيات الكامل تواصل معنا عبر <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a>.</span>
+  </p>
 </section>
 
 
