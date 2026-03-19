@@ -44,6 +44,11 @@ body {
   font-size: 1.5rem;
   letter-spacing: 0.04em;
 }
+.brand a {
+  color: rgba(246,243,236,0.96);
+  text-decoration: none;
+}
+.brand a:hover { text-decoration: underline; }
 .back-link {
   color: rgba(246,243,236,0.88);
   text-decoration: none;
@@ -107,6 +112,19 @@ li {
   color: var(--text-muted);
   font-size: 16px;
 }
+.back-bottom {
+  margin-top: 1rem;
+}
+.back-bottom a {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--green);
+  color: var(--off-white);
+  border: 1px solid var(--green-dark);
+  padding: 0.62rem 0.95rem;
+  font-size: 15px;
+}
+.back-bottom a:hover { background: var(--green-dark); }
 @media (max-width: 768px) {
   body { font-size: 18px; }
   .intro { font-size: 17px; }
@@ -116,7 +134,7 @@ li {
 <body>
   <div class="topbar">
     <div class="topbar-inner">
-      <div class="brand">The Arabic School</div>
+      <div class="brand"><a href="index.html">The Arabic School</a></div>
       <a class="back-link" href="index.html">Back to Home</a>
     </div>
   </div>
@@ -197,6 +215,7 @@ li {
     </section>
 
     <p class="note">For policy questions, contact: <a href="mailto:info@the-arabic-school-courses.com">info@the-arabic-school-courses.com</a></p>
+    <p class="back-bottom"><a href="index.html">Go Back to Main Site</a></p>
   </main>
 </body>
 </html>
