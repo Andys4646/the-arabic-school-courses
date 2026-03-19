@@ -32,6 +32,33 @@ body {
   font-size: 19px;
   line-height: 1.75;
   overflow-x: hidden;
+  position: relative;
+}
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+body::before {
+  background-image:
+    radial-gradient(circle at 16% 24%, rgba(255,255,255,0.4) 0 1px, transparent 2px),
+    radial-gradient(circle at 42% 72%, rgba(255,255,255,0.3) 0 1px, transparent 2px),
+    radial-gradient(circle at 77% 33%, rgba(255,255,255,0.34) 0 1px, transparent 2px),
+    radial-gradient(circle at 91% 65%, rgba(255,255,255,0.28) 0 1px, transparent 2px);
+  opacity: 0.12;
+  animation: siteTwinkle 8s ease-in-out infinite;
+}
+body::after {
+  background: radial-gradient(ellipse 40% 32% at 12% 18%, rgba(255,255,255,0.12) 0%, transparent 72%);
+  opacity: 0.24;
+  animation: siteDrift 18s ease-in-out infinite;
+}
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ── LANG BAR ── */
@@ -122,16 +149,21 @@ nav a:hover { color: var(--off-white); }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 55% 50% at 50% 45%, rgba(255,255,255,0.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse 55% 50% at 50% 45%, rgba(255,255,255,0.2) 0%, transparent 70%);
   pointer-events: none;
+  animation: heroGlow 9s ease-in-out infinite;
 }
 .hero::after {
   content: '';
   position: absolute; inset: 0;
-  border-left: 0.5px solid rgba(246,243,236,0.06);
-  border-right: 0.5px solid rgba(246,243,236,0.06);
-  margin: 0 3rem;
+  background-image:
+    radial-gradient(circle at 12% 28%, rgba(255,255,255,0.3) 0 1px, transparent 2px),
+    radial-gradient(circle at 34% 63%, rgba(255,255,255,0.26) 0 1px, transparent 2px),
+    radial-gradient(circle at 61% 31%, rgba(255,255,255,0.28) 0 1px, transparent 2px),
+    radial-gradient(circle at 83% 56%, rgba(255,255,255,0.26) 0 1px, transparent 2px);
+  opacity: 0.17;
   pointer-events: none;
+  animation: heroSparkle 6.5s ease-in-out infinite;
 }
 .hero-inner { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
 
@@ -157,6 +189,48 @@ nav a:hover { color: var(--off-white); }
 .hero-sub {
   font-size: 17.5px; color: rgba(246,243,236,0.68);
   max-width: 620px; margin: 0 auto; line-height: 1.85;
+}
+
+/* ── COURSE BANNER ── */
+.course-banner {
+  background: var(--green);
+  border-top: 0.5px solid rgba(255,255,255,0.16);
+  border-bottom: 0.5px solid rgba(255,255,255,0.16);
+  overflow: hidden;
+  position: relative;
+}
+.course-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.05) 24%, rgba(255,255,255,0) 52%);
+  opacity: 0.38;
+  animation: glossShift 10s ease-in-out infinite;
+}
+.course-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeMove 34s linear infinite;
+  position: relative;
+  z-index: 1;
+}
+.course-banner-track {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+  color: rgba(255,255,255,0.92);
+  font-size: 13px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.course-banner-track span {
+  border: 0.5px solid rgba(255,255,255,0.27);
+  border-radius: 999px;
+  padding: 0.18rem 0.62rem;
+  background: rgba(255,255,255,0.04);
 }
 
 /* ── SUBJECT SECTIONS ── */
@@ -434,11 +508,36 @@ footer::after {
   0%, 100% { transform: translateX(-8%); opacity: 0.34; }
   50% { transform: translateX(6%); opacity: 0.5; }
 }
+@keyframes heroGlow {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+@keyframes heroSparkle {
+  0%, 100% { opacity: 0.11; }
+  50% { opacity: 0.24; }
+}
+@keyframes marqueeMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes siteTwinkle {
+  0%, 100% { opacity: 0.08; }
+  50% { opacity: 0.16; }
+}
+@keyframes siteDrift {
+  0%, 100% { transform: translateX(-3%) translateY(-2%); opacity: 0.16; }
+  50% { transform: translateX(4%) translateY(2%); opacity: 0.3; }
+}
 @media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after,
+  .hero::before,
+  .hero::after,
   .policy-strip::before,
   .policy-strip::after,
   footer::before,
-  footer::after { animation: none; }
+  footer::after,
+  .course-marquee { animation: none; }
 }
 
 /* ── RESPONSIVE ── */
@@ -464,6 +563,7 @@ footer::after {
   footer { padding: 1.8rem 1.5rem; }
   .footer-inner { grid-template-columns: 1fr; text-align: center; }
   .footer-right { align-items: center; }
+  .course-banner-track { font-size: 11.5px; gap: 0.5rem; }
   .lang-bar { padding: 0.4rem 1.2rem; }
   .section-ar { display: none; }
 }
@@ -479,6 +579,7 @@ body.ar-mode .section-ar { margin-left: 0; margin-right: auto; }
 body.ar-mode .card-cta::after { content: '←'; }
 body.ar-mode [data-en] { display: none !important; }
 body.ar-mode [data-ar] { display: inline !important; }
+body.ar-mode .course-marquee[data-ar] { display: flex !important; }
 </style>
 </head>
 <body>
@@ -537,7 +638,32 @@ body.ar-mode [data-ar] { display: inline !important; }
       <span data-en>Structured courses in Naḥw, Ṣarf, Balāghah, Literature, and Linguistics — rooted in the classical scholarly tradition.</span>
       <span data-ar>دروس منهجية في النحو والصرف والبلاغة والأدب واللسانيات — متجذّرة في التراث العلمي الأصيل.</span>
     </p>
-  </div></section>
+  </div>
+</section>
+
+<!-- ══ MOVING COURSE BANNER ══ -->
+<section class="course-banner" aria-label="Course names moving banner">
+  <div class="course-marquee" data-en>
+    <div class="course-banner-track">
+      <span>Naḥw</span><span>Ṣarf</span><span>Balāghah</span><span>Literature</span><span>Linguistics</span>
+      <span>Introduction to Naḥw</span><span>Verb Conjugation Mastery</span><span>Quranic Rhetoric &amp; Iʿjāz</span><span>Arabic Phonology &amp; Phonetics</span>
+    </div>
+    <div class="course-banner-track" aria-hidden="true">
+      <span>Naḥw</span><span>Ṣarf</span><span>Balāghah</span><span>Literature</span><span>Linguistics</span>
+      <span>Introduction to Naḥw</span><span>Verb Conjugation Mastery</span><span>Quranic Rhetoric &amp; Iʿjāz</span><span>Arabic Phonology &amp; Phonetics</span>
+    </div>
+  </div>
+  <div class="course-marquee" data-ar style="display:none">
+    <div class="course-banner-track">
+      <span>النحو</span><span>الصرف</span><span>البلاغة</span><span>الأدب</span><span>اللسانيات</span>
+      <span>مقدمة في النحو</span><span>إتقان تصريف الأفعال</span><span>بلاغة القرآن وإعجازه</span><span>الصوتيات العربية</span>
+    </div>
+    <div class="course-banner-track" aria-hidden="true">
+      <span>النحو</span><span>الصرف</span><span>البلاغة</span><span>الأدب</span><span>اللسانيات</span>
+      <span>مقدمة في النحو</span><span>إتقان تصريف الأفعال</span><span>بلاغة القرآن وإعجازه</span><span>الصوتيات العربية</span>
+    </div>
+  </div>
+</section>
 
 
 <!-- ══ NAHW ══ -->
