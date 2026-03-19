@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arabic School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:       #1b3d2c;
+  --green-mid:   #2a5440;
+  --green-light: #3c6e52;
+  --off-white:   #f6f3ec;
+  --off-white-2: #edeae1;
+  --text:        #1b3d2c;
+  --text-muted:  #4a6a57;
+  --text-faint:  #7a9a87;
+  --rule:        rgba(27,61,44,0.14);
+  --rule-strong: rgba(27,61,44,0.26);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--off-white);
+  color: var(--text);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── LANG BAR ── */
+.lang-bar {
+  background: var(--green);
+  padding: 0.45rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  border-bottom: 0.5px solid rgba(246,243,236,0.08);
+}
+.lang-bar.center { justify-content: center; border-top: 0.5px solid rgba(246,243,236,0.1); border-bottom: none; }
+
+.lang-btn {
+  font-family: 'EB Garamond', serif;
+  font-size: 13.5px;
+  font-style: italic;
+  letter-spacing: 0.07em;
+  color: rgba(246,243,236,0.55);
+  background: none;
+  border: 0.5px solid rgba(246,243,236,0.2);
+  padding: 0.25rem 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lang-btn:hover, .lang-btn.active {
+  color: var(--off-white);
+  border-color: rgba(246,243,236,0.6);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--green);
+  padding: 0 3rem;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 0.5px solid rgba(246,243,236,0.1);
+}
+
+.logo-area { display: flex; align-items: center; gap: 13px; text-decoration: none; }
+
+/* SVG Logo */
+.logo-svg { width: 42px; height: 42px; flex-shrink: 0; }
+
+.logo-text { display: flex; flex-direction: column; line-height: 1.15; }
+.logo-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--off-white);
+}
+.logo-ar {
+  font-family: 'Amiri', serif;
+  font-size: 13px;
+  color: rgba(246,243,236,0.5);
+  direction: rtl; text-align: right;
+}
+
+nav { display: flex; align-items: center; }
+nav a {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; font-style: italic;
+  letter-spacing: 0.03em;
+  color: rgba(246,243,236,0.6);
+  text-decoration: none;
+  padding: 0 1rem;
+  border-right: 0.5px solid rgba(246,243,236,0.13);
+  transition: color 0.18s;
+}
+nav a:first-child { border-left: 0.5px solid rgba(246,243,236,0.13); }
+nav a:hover { color: var(--off-white); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 78vh;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 55% 50% at 50% 45%, rgba(60,110,82,0.45) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  border-left: 0.5px solid rgba(246,243,236,0.06);
+  border-right: 0.5px solid rgba(246,243,236,0.06);
+  margin: 0 3rem;
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 2; max-width: 680px; }
+
+.hero-eyebrow {
+  font-size: 11.5px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: rgba(246,243,236,0.38); font-style: italic;
+  margin-bottom: 1.8rem;
+}
+.hero-arabic {
+  font-family: 'Amiri', serif;
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  color: var(--off-white); direction: rtl;
+  line-height: 1.2; margin-bottom: 0.4rem;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 300; font-style: italic;
+  color: rgba(246,243,236,0.75);
+  line-height: 1.45; margin-bottom: 1.8rem;
+}
+.hero-rule { width: 50px; height: 0.5px; background: rgba(246,243,236,0.25); margin: 0 auto 1.8rem; }
+.hero-sub {
+  font-size: 16.5px; color: rgba(246,243,236,0.5);
+  font-style: italic; max-width: 480px; margin: 0 auto; line-height: 1.8;
+}
+
+/* ── SUBJECT SECTIONS ── */
+.subject-section {
+  padding: 4.5rem 3rem;
+  border-top: 0.5px solid var(--rule);
+}
+.subject-section:nth-child(odd) { background: var(--off-white); }
+.subject-section:nth-child(even) { background: var(--off-white-2); }
+
+.section-head {
+  display: flex; align-items: baseline; gap: 1.4rem;
+  margin-bottom: 0.9rem; padding-bottom: 1rem;
+  border-bottom: 0.5px solid var(--rule-strong);
+}
+.section-num {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-faint); font-style: italic; white-space: nowrap;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  font-weight: 300; color: var(--green); line-height: 1;
+}
+.section-ar {
+  font-family: 'Amiri', serif;
+  font-size: 1.25rem; color: var(--text-faint);
+  margin-left: auto; direction: rtl;
+}
+.section-desc {
+  font-size: 15.5px; color: var(--text-muted);
+  font-style: italic; margin-bottom: 2.2rem;
+  max-width: 560px; line-height: 1.8;
+}
+
+/* ── COURSE GRID ── */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.1rem;
+}
+.course-card {
+  background: var(--off-white);
+  border: 0.5px solid var(--rule-strong);
+  display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.course-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(27,61,44,0.11);
+  border-color: var(--green-light);
+}
+.card-img {
+  aspect-ratio: 3/2;
+  background: var(--off-white-2);
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 0.5px solid var(--rule);
+  overflow: hidden;
+}
+/* To add an image: replace inner div with <img src="…" alt="…"> */
+.card-img-text {
+  font-family: 'Amiri', serif;
+  font-size: 2.4rem; color: rgba(27,61,44,0.14); direction: rtl;
+}
+.card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.card-body { padding: 0.9rem 1rem 0.7rem; flex: 1; display: flex; flex-direction: column; gap: 0.3rem; }
+.card-level {
+  font-size: 10px; letter-spacing: 0.17em; text-transform: uppercase;
+  color: var(--green-light); font-style: italic;
+}
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 500;
+  color: var(--green); line-height: 1.2;
+}
+.card-desc {
+  font-size: 13px; color: var(--text-muted);
+  font-style: italic; line-height: 1.6; flex: 1;
+}
+.card-foot {
+  padding: 0.55rem 1rem 0.8rem;
+  border-top: 0.5px solid var(--rule);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.card-cta {
+  font-size: 10.5px; letter-spacing: 0.13em; text-transform: uppercase;
+  color: var(--green); font-weight: 500;
+  display: flex; align-items: center; gap: 4px;
+}
+.card-cta::after { content: '→'; transition: transform 0.18s; }
+.course-card:hover .card-cta::after { transform: translateX(3px); }
+.card-sessions { font-size: 11.5px; color: var(--text-faint); font-style: italic; }
+
+/* ── LEGAL ── */
+.legal-section {
+  background: var(--green);
+  color: var(--off-white);
+  padding: 4.5rem 3rem;
+}
+.legal-head {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+  font-weight: 300; font-style: italic;
+  color: var(--off-white);
+  margin-bottom: 2.8rem; padding-bottom: 1rem;
+  border-bottom: 0.5px solid rgba(246,243,236,0.18);
+}
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem 3rem;
+  max-width: 1100px;
+}
+.legal-block h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; font-weight: 500;
+  color: var(--off-white);
+  margin-bottom: 0.65rem; padding-bottom: 0.45rem;
+  border-bottom: 0.5px solid rgba(246,243,236,0.14);
+}
+.legal-block p,
+.legal-block li {
+  font-size: 13.5px; color: rgba(246,243,236,0.55);
+  line-height: 1.75; font-style: italic;
+}
+.legal-block ul { padding-left: 1.1rem; margin-top: 0.4rem; }
+.legal-block li { margin-bottom: 0.25rem; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--green);
+  border-top: 0.5px solid rgba(246,243,236,0.1);
+  padding: 2rem 3rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.75rem;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.09em; text-transform: uppercase;
+  color: rgba(246,243,236,0.45);
+}
+.footer-ar {
+  font-family: 'Amiri', serif;
+  font-size: 1.2rem; color: rgba(246,243,236,0.35); direction: rtl;
+}
+.footer-note { font-size: 12.5px; color: rgba(246,243,236,0.3); font-style: italic; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  header { padding: 0 1.2rem; }
+  nav a { font-size: 13px; padding: 0 0.55rem; }
+  .logo-en { font-size: 13.5px; }
+  .hero { padding: 4rem 1.5rem; }
+  .subject-section, .legal-section { padding: 3.2rem 1.5rem; }
+  footer { padding: 1.8rem 1.5rem; flex-direction: column; text-align: center; }
+  .lang-bar { padding: 0.4rem 1.2rem; }
+  .section-ar { display: none; }
+}
+
+/* ── ARABIC MODE ── */
+[data-ar] { display: none; }
+
+body.ar-mode { direction: rtl; font-family: 'Amiri', serif; }
+body.ar-mode .logo-en { display: none; }
+body.ar-mode .logo-ar { color: var(--off-white); font-size: 15px; }
+body.ar-mode nav a { font-family: 'Amiri', serif; font-style: normal; font-size: 16px; }
+body.ar-mode .section-ar { margin-left: 0; margin-right: auto; }
+body.ar-mode .card-cta::after { content: '←'; }
+body.ar-mode [data-en] { display: none !important; }
+body.ar-mode [data-ar] { display: inline !important; }
+body.ar-mode .legal-block p[data-en],
+body.ar-mode .legal-block ul[data-en] { display: none !important; }
+body.ar-mode .legal-block p[data-ar],
+body.ar-mode .legal-block ul[data-ar] { display: block !important; }
+</style>
+</head>
+<body>
+
+<!-- ══ LANG BAR TOP ══ -->
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-en-top" onclick="setLang('en')">English</button>
+  <button class="lang-btn" id="btn-ar-top" onclick="setLang('ar')">عربي</button>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header>
+  <a class="logo-area" href="#">
+    <!-- LOGO: geometric Islamic-inspired mark with Arabic م -->
+    <svg class="logo-svg" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <!-- Outer octagon -->
+      <polygon points="21,1.5 30,5 40,15 40,27 30,37 21,40.5 12,37 2,27 2,15 12,5"
+        stroke="rgba(246,243,236,0.5)" stroke-width="0.7"/>
+      <!-- Inner square rotated 45° -->
+      <rect x="11" y="11" width="20" height="20" transform="rotate(45 21 21)"
+        stroke="rgba(246,243,236,0.2)" stroke-width="0.5"/>
+      <!-- Arabic م -->
+      <text x="21" y="27" text-anchor="middle"
+        font-family="Amiri, serif" font-size="17" fill="rgba(246,243,236,0.9)">م</text>
+    </svg>
+    <div class="logo-text">
+      <span class="logo-en">The Arabic School</span>
+      <span class="logo-ar">مدرسة العربية</span>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#nahw"><span data-en>Naḥw</span><span data-ar>النحو</span></a>
+    <a href="#sarf"><span data-en>Ṣarf</span><span data-ar>الصرف</span></a>
+    <a href="#balaghah"><span data-en>Balāghah</span><span data-ar>البلاغة</span></a>
+    <a href="#literature"><span data-en>Literature</span><span data-ar>الأدب</span></a>
+    <a href="#linguistics"><span data-en>Linguistics</span><span data-ar>اللسانيات</span></a>
+  </nav>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span data-en>Classical Arabic · Scholarly Tradition</span>
+      <span data-ar>العربية الفصحى · التراث العلمي</span>
+    </div>
+    <div class="hero-arabic">مدرسة العربية</div>
+    <div class="hero-title">
+      <span data-en>A Sanctuary for the Serious Study of Arabic</span>
+      <span data-ar>ملاذ لدراسة العربية على أصولها</span>
+    </div>
+    <div class="hero-rule"></div>
+    <p class="hero-sub">
+      <span data-en>Structured courses in Naḥw, Ṣarf, Balāghah, Literature, and Linguistics — rooted in the classical scholarly tradition.</span>
+      <span data-ar>دروس منهجية في النحو والصرف والبلاغة والأدب واللسانيات — متجذّرة في التراث العلمي الأصيل.</span>
+    </p>
+  </div>
+</section>
+
+
+<!-- ══ NAHW ══ -->
+<section class="subject-section" id="nahw">
+  <div class="section-head">
+    <span class="section-num">I</span>
+    <h2 class="section-title"><span data-en>Naḥw</span><span data-ar>النحو</span></h2>
+    <span class="section-ar">النحو</span>
+  </div>
+  <p class="section-desc">
+    <span data-en>The science of Arabic grammar — how words are arranged, inflected, and governed in classical texts.</span>
+    <span data-ar>علم النحو — كيفية ترتيب الكلمات وإعرابها في النصوص الكلاسيكية.</span>
+  </p>
+  <div class="course-grid">
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الإعراب</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Foundation · Level 1</span><span data-ar>مستوى أول</span></div>
+        <div class="card-title"><span data-en>Introduction to Naḥw</span><span data-ar>مقدمة في النحو</span></div>
+        <div class="card-desc"><span data-en>Core principles of Arabic syntactic grammar for the beginning student.</span><span data-ar>أساسيات النحو العربي للمبتدئين.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">12 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الجملة</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Foundation · Level 2</span><span data-ar>مستوى ثانٍ</span></div>
+        <div class="card-title"><span data-en>The Arabic Sentence</span><span data-ar>الجملة العربية</span></div>
+        <div class="card-desc"><span data-en>Nominal and verbal sentences, case endings, and syntactic roles.</span><span data-ar>الجملة الاسمية والفعلية والحركات الإعرابية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الحرف</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Intermediate · Level 3</span><span data-ar>مستوى متوسط</span></div>
+        <div class="card-title"><span data-en>Particles &amp; Governance</span><span data-ar>الحروف والعوامل</span></div>
+        <div class="card-desc"><span data-en>Arabic particles and their governing effects on nouns and verbs.</span><span data-ar>أحكام الحروف وعملها في الأسماء والأفعال.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">8 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">ألفية</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced</span><span data-ar>مستوى متقدم</span></div>
+        <div class="card-title"><span data-en>Alfiyyah of Ibn Mālik</span><span data-ar>ألفية ابن مالك</span></div>
+        <div class="card-desc"><span data-en>Ibn Mālik's thousand-verse poem — the pinnacle of classical Arabic grammar.</span><span data-ar>قراءة منهجية في ألفية ابن مالك في النحو.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">24 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الاجرومية</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Intensive</span><span data-ar>مكثف</span></div>
+        <div class="card-title"><span data-en>Al-Ājurrūmiyyah Intensive</span><span data-ar>الآجرومية مكثّفة</span></div>
+        <div class="card-desc"><span data-en>The essential classical primer in Arabic grammar, studied in full.</span><span data-ar>دراسة مكثفة في متن الآجرومية الكلاسيكي.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">6 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">إعراب</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced · Workshop</span><span data-ar>ورشة متقدمة</span></div>
+        <div class="card-title"><span data-en>Practical Iʿrāb Workshop</span><span data-ar>ورشة الإعراب التطبيقي</span></div>
+        <div class="card-desc"><span data-en>Speed and precision in parsing classical Arabic texts.</span><span data-ar>الإعراب بسرعة ودقة في النصوص الكلاسيكية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">8 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ══ SARF ══ -->
+<section class="subject-section" id="sarf">
+  <div class="section-head">
+    <span class="section-num">II</span>
+    <h2 class="section-title"><span data-en>Ṣarf</span><span data-ar>الصرف</span></h2>
+    <span class="section-ar">الصرف</span>
+  </div>
+  <p class="section-desc">
+    <span data-en>Arabic morphology — word formation, verbal patterns, and the root system.</span>
+    <span data-ar>علم الصرف — بنية الكلمات والأوزان الصرفية ونظام الجذور.</span>
+  </p>
+  <div class="course-grid">
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الوزن</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Foundation · Level 1</span><span data-ar>مستوى أول</span></div>
+        <div class="card-title"><span data-en>The Arabic Root System</span><span data-ar>نظام الجذور العربية</span></div>
+        <div class="card-desc"><span data-en>Trilateral roots, morphological patterns, and word formation.</span><span data-ar>الجذور الثلاثية والأوزان الصرفية وأسس بناء الكلمة.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الأفعال</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Foundation · Level 2</span><span data-ar>مستوى ثانٍ</span></div>
+        <div class="card-title"><span data-en>Verb Conjugation Mastery</span><span data-ar>إتقان تصريف الأفعال</span></div>
+        <div class="card-desc"><span data-en>The verbal paradigm across all ten primary patterns and conjugations.</span><span data-ar>الأوزان الفعلية العشرة وتصريفاتها الكاملة.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">12 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">المشتقات</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Intermediate</span><span data-ar>متوسط</span></div>
+        <div class="card-title"><span data-en>Derived Forms &amp; Participles</span><span data-ar>المشتقات والمصادر</span></div>
+        <div class="card-desc"><span data-en>Participles, verbal nouns, and derivatives of all verb classes.</span><span data-ar>اسم الفاعل والمفعول والمصادر من جميع الأبواب.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الإعلال</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced</span><span data-ar>متقدم</span></div>
+        <div class="card-title"><span data-en>Iʿlāl — Morphological Change</span><span data-ar>الإعلال والإبدال</span></div>
+        <div class="card-desc"><span data-en>Phonological changes and mutations in weak-letter verb forms.</span><span data-ar>التغييرات الصوتية في الأفعال المعتلة.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">8 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">التصريف</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Applied</span><span data-ar>تطبيقي</span></div>
+        <div class="card-title"><span data-en>Applied Taṣrīf in the Quran</span><span data-ar>التصريف في القرآن</span></div>
+        <div class="card-desc"><span data-en>Morphological analysis applied to Quranic vocabulary.</span><span data-ar>تحليل صرفي لمفردات القرآن الكريم.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">12 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">البنية</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced · Texts</span><span data-ar>نصوص متقدمة</span></div>
+        <div class="card-title"><span data-en>Classical Morphology Texts</span><span data-ar>نصوص الصرف الكلاسيكية</span></div>
+        <div class="card-desc"><span data-en>Direct reading of Al-Maqṣūd with traditional commentaries.</span><span data-ar>قراءة متن المقصود مع شروحه الكلاسيكية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">14 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ══ BALAGHAH ══ -->
+<section class="subject-section" id="balaghah">
+  <div class="section-head">
+    <span class="section-num">III</span>
+    <h2 class="section-title"><span data-en>Balāghah</span><span data-ar>البلاغة</span></h2>
+    <span class="section-ar">البلاغة</span>
+  </div>
+  <p class="section-desc">
+    <span data-en>Arabic eloquence — clarity, figurative expression, and the rhetorical dimensions of the language.</span>
+    <span data-ar>علم البلاغة — الوضوح والبيان والأسلوب البلاغي في العربية.</span>
+  </p>
+  <div class="course-grid">
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">البيان</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Foundation</span><span data-ar>مستوى أول</span></div>
+        <div class="card-title"><span data-en>Introduction to Balāghah</span><span data-ar>مقدمة في البلاغة</span></div>
+        <div class="card-desc"><span data-en>Survey of Maʿānī, Bayān, and Badīʿ — the three branches of rhetoric.</span><span data-ar>استعراض المعاني والبيان والبديع.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">المعاني</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Intermediate</span><span data-ar>متوسط</span></div>
+        <div class="card-title"><span data-en>ʿIlm al-Maʿānī</span><span data-ar>علم المعاني</span></div>
+        <div class="card-desc"><span data-en>How meaning shifts with structure, context, and rhetorical situation.</span><span data-ar>تحوّل المعاني بتغيّر التركيب والسياق.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">12 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">التشبيه</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Intermediate</span><span data-ar>متوسط</span></div>
+        <div class="card-title"><span data-en>Simile, Metaphor &amp; Image</span><span data-ar>التشبيه والاستعارة</span></div>
+        <div class="card-desc"><span data-en>Figurative language and imagery in the Arabic literary tradition.</span><span data-ar>أدوات البيان في الأدب العربي الكلاسيكي.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الإعجاز</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced · Seminar</span><span data-ar>ندوة متقدمة</span></div>
+        <div class="card-title"><span data-en>Quranic Rhetoric &amp; Iʿjāz</span><span data-ar>بلاغة القرآن وإعجازه</span></div>
+        <div class="card-desc"><span data-en>The rhetorical inimitability of the Quran through classical Balāghah.</span><span data-ar>الإعجاز البياني في القرآن الكريم.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">16 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">البديع</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced</span><span data-ar>متقدم</span></div>
+        <div class="card-title"><span data-en>ʿIlm al-Badīʿ</span><span data-ar>علم البديع</span></div>
+        <div class="card-desc"><span data-en>Rhetorical embellishments — Ṭibāq, Jinās, and beyond.</span><span data-ar>المحسنات البديعية من طباق وجناس وغيرها.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">8 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الأسلوب</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Applied · Workshop</span><span data-ar>ورشة تطبيقية</span></div>
+        <div class="card-title"><span data-en>Style &amp; Eloquence Workshop</span><span data-ar>ورشة الأسلوب والفصاحة</span></div>
+        <div class="card-desc"><span data-en>Applying Balāghah principles to the composition of elevated prose.</span><span data-ar>تطبيق أسس البلاغة في كتابة النثر الرفيع.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">8 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ══ LITERATURE ══ -->
+<section class="subject-section" id="literature">
+  <div class="section-head">
+    <span class="section-num">IV</span>
+    <h2 class="section-title"><span data-en>Literature</span><span data-ar>الأدب</span></h2>
+    <span class="section-ar">الأدب</span>
+  </div>
+  <p class="section-desc">
+    <span data-en>Arabic literary heritage — from the Muʿallaqāt of pre-Islamic Arabia to the great prose of the Abbasid age.</span>
+    <span data-ar>التراث الأدبي العربي — من المعلقات الجاهلية إلى روائع النثر العباسي.</span>
+  </p>
+  <div class="course-grid">
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الشعر</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Foundation</span><span data-ar>مستوى أول</span></div>
+        <div class="card-title"><span data-en>Introduction to Arabic Poetry</span><span data-ar>مقدمة في الشعر العربي</span></div>
+        <div class="card-desc"><span data-en>Metre, form, and the major genres of the classical poetic tradition.</span><span data-ar>الوزن والشكل والأجناس الشعرية الكلاسيكية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">المعلقات</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Intermediate</span><span data-ar>متوسط</span></div>
+        <div class="card-title"><span data-en>The Muʿallaqāt</span><span data-ar>المعلقات</span></div>
+        <div class="card-desc"><span data-en>Close reading of the seven suspended odes — the peak of pre-Islamic poetry.</span><span data-ar>قراءة تحليلية في القصائد المعلقة السبع.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">12 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">النثر</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Intermediate</span><span data-ar>متوسط</span></div>
+        <div class="card-title"><span data-en>Classical Arabic Prose</span><span data-ar>النثر الكلاسيكي</span></div>
+        <div class="card-desc"><span data-en>Al-Jāḥiẓ, Al-Hamadhānī, Al-Ḥarīrī — the great Abbasid prose writers.</span><span data-ar>الجاحظ والهمذاني والحريري — عمالقة النثر العباسي.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">العروض</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Prosody</span><span data-ar>علم العروض</span></div>
+        <div class="card-title"><span data-en>ʿArūḍ — Arabic Prosody</span><span data-ar>علم العروض والقافية</span></div>
+        <div class="card-desc"><span data-en>The sixteen classical rhythmic metres of Arabic verse.</span><span data-ar>البحور الشعرية الستة عشر في الشعر العربي.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الأندلس</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Special Topic</span><span data-ar>موضوع خاص</span></div>
+        <div class="card-title"><span data-en>Andalusian Arabic Literature</span><span data-ar>أدب الأندلس</span></div>
+        <div class="card-desc"><span data-en>Poetry, prose, and the Muwashshaḥ in the golden age of Al-Andalus.</span><span data-ar>الشعر والنثر والموشحات في الحضارة الأندلسية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الديوان</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced · Seminar</span><span data-ar>ندوة متقدمة</span></div>
+        <div class="card-title"><span data-en>Reading a Poet's Dīwān</span><span data-ar>قراءة في ديوان شاعر</span></div>
+        <div class="card-desc"><span data-en>A semester-long close reading of a single poet's complete works.</span><span data-ar>قراءة مطوّلة في الأعمال الكاملة لشاعر.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">20 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ══ LINGUISTICS ══ -->
+<section class="subject-section" id="linguistics">
+  <div class="section-head">
+    <span class="section-num">V</span>
+    <h2 class="section-title"><span data-en>Linguistics</span><span data-ar>اللسانيات</span></h2>
+    <span class="section-ar">اللسانيات</span>
+  </div>
+  <p class="section-desc">
+    <span data-en>The scientific study of Arabic — history, phonology, dialectal variation, and Semitic context.</span>
+    <span data-ar>الدراسة العلمية للعربية — تاريخها وأصواتها ولهجاتها وموقعها السامي.</span>
+  </p>
+  <div class="course-grid">
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">اللغة</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Foundation</span><span data-ar>مستوى أول</span></div>
+        <div class="card-title"><span data-en>Introduction to Arabic Linguistics</span><span data-ar>مقدمة في اللسانيات</span></div>
+        <div class="card-desc"><span data-en>Core concepts of modern linguistics applied to Arabic.</span><span data-ar>المفاهيم اللسانية الحديثة مطبّقةً على العربية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الأصوات</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Phonology</span><span data-ar>علم الأصوات</span></div>
+        <div class="card-title"><span data-en>Arabic Phonology &amp; Phonetics</span><span data-ar>الصوتيات العربية</span></div>
+        <div class="card-desc"><span data-en>Articulation, phonemic contrasts, and historical sound change.</span><span data-ar>مخارج الحروف والفروق الصوتية والتطور التاريخي.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">التاريخ</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Historical</span><span data-ar>تاريخي</span></div>
+        <div class="card-title"><span data-en>History of the Arabic Language</span><span data-ar>تاريخ اللغة العربية</span></div>
+        <div class="card-desc"><span data-en>From proto-Semitic roots through Old Arabic to Classical Arabic.</span><span data-ar>من الجذور السامية إلى الفصحى الكلاسيكية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">12 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">اللهجات</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Dialectology</span><span data-ar>لهجيات</span></div>
+        <div class="card-title"><span data-en>Arabic Dialectology</span><span data-ar>اللهجات العربية</span></div>
+        <div class="card-desc"><span data-en>Major dialect families, diglossia, and the ʿĀmmiyya–Fuṣḥā relationship.</span><span data-ar>الأسر اللهجية والازدواجية اللغوية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">السامية</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced · Comparative</span><span data-ar>مقارن متقدم</span></div>
+        <div class="card-title"><span data-en>Semitic Comparative Linguistics</span><span data-ar>اللسانيات السامية المقارنة</span></div>
+        <div class="card-desc"><span data-en>Arabic alongside Hebrew, Aramaic, and Ethiopic in the Semitic family.</span><span data-ar>العربية مع العبرية والآرامية والإثيوبية في الأسرة السامية.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">14 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+    <a class="course-card" href="YOUR_GOOGLE_FORM_LINK" target="_blank">
+      <div class="card-img"><div class="card-img-text">الدلالة</div></div>
+      <div class="card-body">
+        <div class="card-level"><span data-en>Advanced · Semantics</span><span data-ar>دلاليات متقدمة</span></div>
+        <div class="card-title"><span data-en>Arabic Semantics</span><span data-ar>علم الدلالة</span></div>
+        <div class="card-desc"><span data-en>The study of meaning in Arabic — classical and modern frameworks.</span><span data-ar>دراسة المعنى في العربية وفق أطر كلاسيكية وحديثة.</span></div>
+      </div>
+      <div class="card-foot">
+        <span class="card-cta"><span data-en>Enrol</span><span data-ar>سجّل</span></span>
+        <span class="card-sessions">10 <span data-en>sessions</span><span data-ar>درسًا</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ══ LEGAL POLICIES ══ -->
+<section class="legal-section" id="legal">
+  <h2 class="legal-head">
+    <span data-en>Policies &amp; Legal Information</span>
+    <span data-ar>السياسات والمعلومات القانونية</span>
+  </h2>
+  <div class="legal-grid">
+
+    <div class="legal-block">
+      <h3><span data-en>Privacy Policy</span><span data-ar>سياسة الخصوصية</span></h3>
+      <p data-en>We collect only the information needed to process your enrolment — name, email, and course preferences submitted via registration forms. This data is used solely to communicate with you about your studies. It is never sold or shared with third parties. You may request deletion of your data at any time by contacting us directly.</p>
+      <p data-ar style="display:none">نجمع فقط المعلومات الضرورية لمعالجة تسجيلك — الاسم والبريد الإلكتروني وتفضيلات الدورة. تُستخدم هذه البيانات حصريًا للتواصل بشأن دراستك، ولا تُباع أو تُشارك. يمكنك طلب حذف بياناتك في أي وقت.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3><span data-en>Terms of Service</span><span data-ar>شروط الخدمة</span></h3>
+      <p data-en>By enrolling, you agree to engage respectfully with instructors and fellow students, complete registration honestly, and use course materials for personal study only. Materials may not be reproduced or redistributed without written permission. The Arabic School may discontinue a course if minimum enrolment is not reached, in which case a full refund is issued.</p>
+      <p data-ar style="display:none">بالتسجيل، توافق على التعامل باحترام مع المعلمين والطلاب، وتقديم معلومات صحيحة، واستخدام المواد الدراسية شخصيًا فقط. يحق للمدرسة إلغاء دورة لم يكتمل حدها الأدنى من المسجلين مع استرداد كامل.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3><span data-en>Refund Policy</span><span data-ar>سياسة الاسترداد</span></h3>
+      <ul data-en>
+        <li>Full refund if requested more than 7 days before the course starts.</li>
+        <li>50% refund if requested within 7 days of the start date but before the second session.</li>
+        <li>No refund after the second session has been attended.</li>
+        <li>If cancelled by The Arabic School, a full refund is guaranteed.</li>
+      </ul>
+      <ul data-ar style="display:none">
+        <li>استرداد كامل إذا طُلب قبل 7 أيام من بدء الدورة.</li>
+        <li>استرداد 50٪ إذا طُلب خلال 7 أيام من البداية وقبل الجلسة الثانية.</li>
+        <li>لا استرداد بعد حضور الجلسة الثانية.</li>
+        <li>إذا ألغت المدرسة الدورة، يُضمن الاسترداد الكامل.</li>
+      </ul>
+    </div>
+
+    <div class="legal-block">
+      <h3><span data-en>Code of Conduct</span><span data-ar>مدوّنة السلوك</span></h3>
+      <p data-en>The Arabic School is a scholarly community. All students must communicate courteously, arrive prepared, and treat the classical tradition with seriousness. Disruptive conduct or disrespect toward instructors or students may result in removal from the course without refund.</p>
+      <p data-ar style="display:none">مدرسة العربية مجتمع علمي راقٍ. يُتوقع من الطلاب التحلي بالأدب والاستعداد، ومعاملة التراث الكلاسيكي بجدية. أي سلوك مخل قد يؤدي إلى الفصل دون استرداد.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3><span data-en>Course Delivery</span><span data-ar>آلية التدريس</span></h3>
+      <p data-en>All courses are delivered online via scheduled live sessions. Session times are communicated upon registration. Recordings may be shared at the instructor's discretion. Students are responsible for a stable internet connection and a quiet study environment.</p>
+      <p data-ar style="display:none">تُقدَّم الدورات عبر الإنترنت في جلسات مباشرة. تُبلَّغ أوقات الجلسات عند التسجيل. قد تُتاح التسجيلات وفق تقدير المعلم. يتحمل الطلاب مسؤولية اتصال مستقر وبيئة هادئة.</p>
+    </div>
+
+    <div class="legal-block">
+      <h3><span data-en>Contact &amp; Enquiries</span><span data-ar>التواصل</span></h3>
+      <p data-en>For questions about enrolment, policies, or course content, write to us directly. We respond to all enquiries within two business days. The Arabic School is committed to being accessible and responsive to every student.</p>
+      <p data-ar style="display:none">لأي استفسار حول التسجيل أو السياسات أو محتوى الدورات، راسلنا مباشرة. نسعى للرد خلال يومي عمل. مدرسة العربية ملتزمة بالتواصل الفعّال مع طلابها.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ LANG BAR BOTTOM ══ -->
+<div class="lang-bar center">
+  <button class="lang-btn active" id="btn-en-bot" onclick="setLang('en')">English</button>
+  <button class="lang-btn" id="btn-ar-bot" onclick="setLang('ar')">عربي</button>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-brand">The Arabic School</div>
+  <div class="footer-ar">مدرسة العربية</div>
+  <div class="footer-note">
+    <span data-en>Dedicated to the classical tradition of Arabic scholarship</span>
+    <span data-ar>خدمةً للتراث العلمي العربي الأصيل</span>
+  </div>
+</footer>
+
+<script>
+function setLang(lang) {
+  const ar = lang === 'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = ar ? 'rtl' : 'ltr';
+  document.body.classList.toggle('ar-mode', ar);
+
+  const ids = ['btn-en-top','btn-ar-top','btn-en-bot','btn-ar-bot'];
+  ids.forEach(id => {
+    const b = document.getElementById(id);
+    if (!b) return;
+    b.classList.toggle('active', ar ? id.includes('ar') : id.includes('en'));
+  });
+
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.style.display = ar ? 'none' : '';
+  });
+  document.querySelectorAll('[data-ar]').forEach(el => {
+    el.style.display = ar ? '' : 'none';
+  });
+}
+setLang('en');
+</script>
+</body>
+</html>
