@@ -11,16 +11,16 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green:       #1b3d2c;
-  --green-mid:   #2a5440;
-  --green-light: #3c6e52;
-  --off-white:   #f6f3ec;
-  --off-white-2: #edeae1;
-  --text:        #1b3d2c;
-  --text-muted:  #2f5240;
-  --text-faint:  #5f7f6d;
-  --rule:        rgba(27,61,44,0.14);
-  --rule-strong: rgba(27,61,44,0.26);
+  --green:       #111111;
+  --green-mid:   #1a1a1a;
+  --green-light: #2e2e2e;
+  --off-white:   #ffffff;
+  --off-white-2: #f5f5f5;
+  --text:        #111111;
+  --text-muted:  #2c2c2c;
+  --text-faint:  #5a5a5a;
+  --rule:        rgba(0,0,0,0.14);
+  --rule-strong: rgba(0,0,0,0.24);
 }
 
 html { scroll-behavior: smooth; }
@@ -122,7 +122,7 @@ nav a:hover { color: var(--off-white); }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 55% 50% at 50% 45%, rgba(60,110,82,0.45) 0%, transparent 70%);
+  background: radial-gradient(ellipse 55% 50% at 50% 45%, rgba(255,255,255,0.18) 0%, transparent 70%);
   pointer-events: none;
 }
 .hero::after {
@@ -216,7 +216,7 @@ nav a:hover { color: var(--off-white); }
 }
 .course-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(27,61,44,0.11);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.11);
   border-color: var(--green-light);
 }
 .card-img {
@@ -230,7 +230,7 @@ nav a:hover { color: var(--off-white); }
 /* To add an image: replace inner div with <img src="…" alt="…"> */
 .card-img-text {
   font-family: 'Amiri', serif;
-  font-size: 2.4rem; color: rgba(27,61,44,0.14); direction: rtl;
+  font-size: 2.4rem; color: rgba(0,0,0,0.12); direction: rtl;
 }
 .card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -276,13 +276,13 @@ nav a:hover { color: var(--off-white); }
 .catalog-note a {
   color: var(--green);
   text-decoration: none;
-  border-bottom: 0.5px solid rgba(27,61,44,0.36);
+  border-bottom: 0.5px solid rgba(0,0,0,0.34);
 }
-.catalog-note a:hover { border-bottom-color: rgba(27,61,44,0.85); }
+.catalog-note a:hover { border-bottom-color: rgba(0,0,0,0.8); }
 
 /* ── POLICY STRIP ── */
 .policy-strip {
-  background: linear-gradient(170deg, #173e2f 0%, #123325 100%);
+  background: linear-gradient(170deg, #171717 0%, #0d0d0d 100%);
   border-top: 0.5px solid rgba(246,243,236,0.14);
   padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
   position: relative;
@@ -348,7 +348,7 @@ nav a:hover { color: var(--off-white); }
 
 /* ── FOOTER ── */
 footer {
-  background: linear-gradient(170deg, #173e2f 0%, #102b20 100%);
+  background: linear-gradient(170deg, #171717 0%, #0a0a0a 100%);
   border-top: 0.5px solid rgba(246,243,236,0.1);
   padding: 2.2rem clamp(1.5rem, 4vw, 3rem);
   position: relative;
